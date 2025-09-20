@@ -22,6 +22,7 @@ A **Node.js + Express + EJS** web application that displays real-time cryptocurr
 
 ## 📂 Folder Structure
 
+```text
 crypto-dashboard/
 ├─ public/
 │ ├─ images/ # Screenshots and other images
@@ -31,6 +32,7 @@ crypto-dashboard/
 ├─ index.js # Express server
 ├─ package.json
 └─ README.md
+```
 
 ## 📸 Screenshots
 
