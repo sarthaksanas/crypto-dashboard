@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Crypto Dashboard</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <h1>📊 Crypto Dashboard</h1>
+
+    <table class="crypto-table">
+      <thead>
+        <tr>
+          <th>Logo</th>
+          <th>Name</th>
+          <th>Price (USD)</th>
+          <th>Market Cap</th>
+          <th>24h Change</th>
+        </tr>
+      </thead>
+
+      <tbody>
+      <% if (!Array.isArray(coins) || coins.length === 0) { %>
+        <tr>
+          <td colspan="5" class="no-data">No data available. Try again later.</td>
+        </tr>
+      <% } else { %>
+        <% coins.forEach(coin => { 
+             // safe local vars to avoid runtime/template errors
+             const img = coin && coin.image ? coin.image : 'https://via.placeholder.com/40?text=?';
+             const name = coin && coin.name ? coin.name : 'Unknown';
+             const symbol = coin && coin.symbol ? coin.symbol.toUpperCase() : 'N/A';
+             const price = (coin && coin.current_price != null) ? Number(coin.current_price).toLocaleString() : '0';
+             const mcap = (coin && coin.market_cap != null) ? Number(coin.market_cap).toLocaleString() : '0';
+             const rawChange = (coin && coin.price_change_percentage_24h != null) ? Number(coin.price_change_percentage_24h) : null;
+             const changeDisplay = rawChange != null ? rawChange.toFixed(2) : '0.00';
+             const changeClass = rawChange == null ? 'neutral' : (rawChange >= 0 ? 'positive' : 'negative');
+        %>
+        <tr>
+          <td class="logo-cell">
+            <img src="<%= img %>" width="36" height="36" alt="<%= name %> logo" />
+          </td>
+
+          <td class="name-cell">
+            <%= name %> (<%= symbol %>)
+          </td>
+
+          <td class="price-cell">
+            $<%= price %>
+          </td>
+
+          <td class="mcap-cell">
+            $<%= mcap %>
+          </td>
+
+          <td class="change-cell">
+            <span class="change <%= changeClass %>"><%= changeDisplay %>%</span>
+          </td>
+        </tr>
+        <% }) %>
+      <% } %>
+      </tbody>
+    </table>
+
+  </body>
+</html>

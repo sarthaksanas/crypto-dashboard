@@ -1,0 +1,91 @@
+/* Basic page layout */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: #f6f8fa;
+  color: #111;
+  margin: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Title */
+h1 {
+  margin-bottom: 18px;
+}
+
+/* Table */
+.crypto-table {
+  width: 92%;
+  max-width: 1100px;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  overflow: hidden;
+}
+
+.crypto-table thead th {
+  background: #0f1724;
+  color: #fff;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.crypto-table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eef2f6;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+/* Logo column */
+.logo-cell img {
+  border-radius: 6px;
+  display: block;
+}
+
+/* No data row */
+.no-data {
+  text-align: center;
+  padding: 24px;
+  color: #666;
+}
+
+/* Zebra rows */
+.crypto-table tbody tr:nth-child(even) {
+  background: #fbfdff;
+}
+
+/* Hover */
+.crypto-table tbody tr:hover {
+  background: #f3f7fb;
+}
+
+/* Price & Marketcap formatting */
+.price-cell, .mcap-cell {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Change styles using classes (no inline styles) */
+.change {
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.change.positive {
+  color: #0b6b2f;          /* dark green */
+  background: rgba(11,107,47,0.06);
+}
+
+.change.negative {
+  color: #b91c1c;          /* red */
+  background: rgba(185,28,28,0.06);
+}
+
+.change.neutral {
+  color: #374151;          /* neutral gray */
+  background: rgba(55,65,81,0.03);
+}
